@@ -1,0 +1,180 @@
+@mixin flexible($dis , $direction , $just , $align ) {
+    display: $dis;
+    flex-direction: $direction;
+    justify-content: $just;
+    align-items: $align;
+}
+
+@mixin fuentes($size , $weight , $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color ;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@mixin buttons($radius, $color, $padding, $margin, $border) {
+    border-radius: $radius;
+    background-color: $color;
+    padding: $padding;
+    margin: $margin;
+    border: $border;
+}
+
+@mixin responsive($medida : 510px) {
+    @media screen and (max-width: $medida ) {
+        @content;
+    }
+}
+
+body {
+    background-image: url("../images/tienda.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include flexible(flex, column, flex-start, center);
+
+    //@include responsive() {        height: 100%;    }
+}
+
+main {
+    width: 80vw;
+    height: 90vh;
+    @include buttons(25px, rgba(153, 151, 151, 0.726), 5px, 5px, 1px solid white);
+    @include flexible(flex, column, flex-start, center);
+    box-shadow: 1px 1px 10px 5px#bebebe;
+
+}
+
+select {
+    @include fuentes(17px, normal, black);
+    @include buttons(5px, rgb(207, 205, 205), 5px, 2px, 1px solid white);
+
+    @include responsive() {
+        width: 65vw
+    }
+
+}
+
+input {
+    @include buttons(7px, rgba(153, 151, 151, 0.726), 7px, 5px, 1px solid white);
+}
+
+button {
+    @include fuentes(17px, 600, white);
+    @include buttons(7px, rgb(11, 28, 134), 7px, 5px, 1px solid grey);
+
+    &:hover {
+        cursor: pointer;
+        @include buttons(7px, rgb(20, 29, 80), 7px, 5px, 1px solid white);
+    }
+}
+
+.spanMain {
+    @include fuentes(22px, bold, black);
+    width: 100%;
+    margin-top: 10px;
+    @include flexible(flex, row, center, center);
+}
+
+.section {
+    &-options {
+        @include flexible(flex, row, center, center);
+        flex-wrap: wrap;
+        width: 50vw;
+    }
+
+    &-results {
+        width: 50vw;
+        @include flexible(flex, column, flex-start, center);
+
+        &__form {
+            @include flexible(flex, row, center, center);
+            flex-wrap: wrap;
+
+            span {
+                @include fuentes(18px, bold, black);
+                width: 20%;
+                margin-top: 10px;
+            }
+
+            input {
+                width: 60%;
+            }
+
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        &__button {
+            width: 100%;
+            text-align: center;
+
+            button {
+                width: 30%;
+                @include buttons(7px, rgb(27, 170, 82), 7px, 5px, 1px solid white);
+
+                &:hover {
+                    cursor: pointer;
+                    @include buttons(7px, rgb(18, 114, 55), 7px, 5px, 1px solid white);
+                }
+            }
+        }
+
+        select {
+            width: 60%;
+        }
+
+        &__venta {
+            flex-wrap: wrap;
+            @include flexible(flex, row, center, center);
+
+            select {
+                width: 42%;
+            }
+
+            input {
+                width: 12%;
+            }
+
+            table {
+                @include flexible(flex, column, center, center);
+                @include buttons(10px, #bebebe, 1px, 15px 60px, 1px solid #bebebe);
+                @include fuentes(18px, normal, black);
+                width: 100%;
+                border-collapse: collapse;
+                border-spacing: 0;
+                box-shadow: 1px 1px 10px 5px#bebebe;
+            }
+
+            tr {
+                @include flexible(flex, row, space-evenly, center);
+                width: 100%;
+            }
+
+            td,th {
+                @include flexible(flex, column, space-evenly, center);
+                width: 24%;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f7f7f7;
+            }
+            button {                
+                @include buttons(7px, rgb(27, 170, 82), 7px, 5px, 1px solid white);
+                svg{
+                    stroke: white;
+                }    
+                &:hover {
+                    cursor: pointer;
+                    @include buttons(7px, rgb(18, 114, 55), 7px, 5px, 1px solid white);
+                }
+            }
+        }
+
+        #iValor {
+            width: 10%;
+            height: 18px;
+            @include buttons(7px, rgba(153, 151, 151, 0.726), 7px, 5px, 1px solid white);
+        }
+
+    }
+}
