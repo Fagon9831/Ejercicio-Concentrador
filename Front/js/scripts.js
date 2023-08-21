@@ -67,8 +67,7 @@ function registerProduct() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(infoSend)
-        })
-        console.log(response.json)
+        })        
     })
     document.querySelector(".section-results__button").appendChild(button)
 }
