@@ -12,7 +12,7 @@ function registerProduct() {
         document.querySelector(".section-results__venta").innerHTML = ""
 
     }
-    spanP.textContent="Registrar Empleado!!"
+    spanP.textContent="Registrar Producto!!"
     let span2=document.createElement('span')
     span2.textContent="Nombre: "
     document.querySelector(".section-results__form").appendChild(span2)
@@ -22,7 +22,7 @@ function registerProduct() {
     name.id = "iName"
     document.querySelector(".section-results__form").appendChild(name)
     let span3=document.createElement('span')
-    span3.textContent="Apellido: "
+    span3.textContent="Descripcion: "
     document.querySelector(".section-results__form").appendChild(span3)
 
     let description = document.createElement('input');
@@ -35,6 +35,7 @@ function registerProduct() {
     let price = document.createElement('input');
     price.classList.add("section-results__form");
     price.id = "iPrice"
+    price.type="Number"
     document.querySelector(".section-results__form").appendChild(price)
     let span5=document.createElement('span')
     span5.textContent="Codigo SKU: "
@@ -67,6 +68,7 @@ function registerProduct() {
             },
             body: JSON.stringify(infoSend)
         })
+        console.log(response.json)
     })
     document.querySelector(".section-results__button").appendChild(button)
 }
@@ -105,6 +107,7 @@ function registerClient() {
     let telefono = document.createElement('input');
     telefono.classList.add("section-results__form");
     telefono.id = "iTelefono"
+    telefono.type="number"
     document.querySelector(".section-results__form").appendChild(telefono)
     let span5=document.createElement('span')
     span5.textContent="Direccion: "
